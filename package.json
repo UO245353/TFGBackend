@@ -1,0 +1,23 @@
+{
+  "name": "tfgbackend",
+  "version": "0.0.1",
+  "description": "Backend del TFG de alexa (alexa mas administracion)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UO245353/TFGBackend.git"
+  },
+  "keywords": [
+    "alexa",
+    "uniovi"
+  ],
+  "author": "Daniel Álvarez Vega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UO245353/TFGBackend/issues"
+  },
+  "homepage": "https://github.com/UO245353/TFGBackend#readme"
+}
