@@ -1,1 +1,1 @@
-'use strict';
+#!/bin/bash
