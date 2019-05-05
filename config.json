@@ -1,0 +1,15 @@
+{
+  "mongodb": {
+    "name": "localhost",
+    "port": 27017
+  },
+  "adminProfile": {
+    "appUrl": "localhost",
+    "appPort": 12345
+  },
+  "superuser": {
+    "username": "falsoDelTodo",
+    "pass": "falsaDelTodo"
+  },
+  "secret": "TFG"
+}

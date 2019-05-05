@@ -3,13 +3,18 @@
 module.exports = app => {
 
   return new app.dbLib.dbAdapter().Schema({
-    name: {
-      type: String,
-      unique: true,
+    number: {
+      type: Number,
       required: true
     },
-    pass: String,
-    email: String
+    title: {
+      type: String,
+      required: true
+    },
+    content: {
+      type: String,
+      required: true
+    }
   }, {
     usePushEach: true
   });

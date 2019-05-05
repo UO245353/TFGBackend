@@ -1,5 +1,5 @@
 {
   "esversion": 6,
-  "node": true,
-  "mocha": true
+  "node": 11,
+  "quotmark": "single"
 }

@@ -7,7 +7,7 @@ const $ = require('gulp-load-plugins')({
 	camelize: true
 });
 
-require('require-dir')('./gulp');
+require('require-dir-lite')('./gulp');
 
 gulp.task('default', function (cb) {
 	// TODO: add the test

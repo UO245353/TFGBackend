@@ -1,10 +1,41 @@
 {
   "name": "tfgbackend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Backend del TFG de alexa (alexa mas administracion)",
-  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app",
+    "test": "gulp test",
+    "individual-test": "mocha $1"
+  },
+  "dependencies": {
+    "bcrypt": "3.0.5",
+    "bluebird": "3.5.3",
+    "body-parser": "1.18.3",
+    "cors": "2.8.5",
+    "express": "4.16.4",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.11",
+    "mongoose": "5.4.19",
+    "request": "2.88.0",
+    "request-promise": "4.2.4"
+  },
+  "devDependencies": {
+    "app-module-path": "2.2.0",
+    "gulp": "3.9.1",
+    "gulp-env": "0.4.0",
+    "gulp-install": "1.1.0",
+    "gulp-istanbul": "1.1.3",
+    "gulp-jshint": "2.1.0",
+    "gulp-load-plugins": "1.5.0",
+    "gulp-mocha": "6.0.0",
+    "gulp-nodemon": "2.4.2",
+    "gulp-sequence": "1.0.0",
+    "http-proxy": "1.17.0",
+    "jshint": "2.10.2",
+    "keypress": "0.2.1",
+    "mocha": "6.0.2",
+    "require-dir-lite": "1.0.0",
+    "should": "13.2.3"
   },
   "repository": {
     "type": "git",
