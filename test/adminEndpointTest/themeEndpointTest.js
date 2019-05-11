@@ -67,7 +67,7 @@ describe('THEME TEST :', function() {
   // Test Vars //
   ///////////////
 
-  const path = 'http://localhost:' + APP.config.server.adminAppPort + '/api/theme';
+  const path = 'http://localhost:' + APP.config.server.appPort + '/api/theme';
 
   let admins = [
     {

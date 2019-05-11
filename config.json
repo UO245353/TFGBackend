@@ -1,15 +1,15 @@
 {
-  "mongodb": {
+  "mongoConfig": {
     "name": "localhost",
     "port": 27017
   },
-  "adminProfile": {
-    "appUrl": "localhost",
-    "appPort": 12345
+  "appConfig": {
+    "appPort": 23456
   },
   "superuser": {
-    "username": "falsoDelTodo",
-    "pass": "falsaDelTodo"
+    "username": "UO245353",
+    "pass": "$2b$10$tmhxU/kyFVn5d/Pg.bALDO13WXjyicUNmYWUnovoNfCPBlrA/9D.6"
   },
-  "secret": "TFG"
+  "secret": "TFG",
+  "issuer": "UniOvi"
 }

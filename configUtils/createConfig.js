@@ -3,31 +3,42 @@
 const fs = require('fs');
 const Buffer = require('buffer').Buffer;
 
-let bf;
+const opts = {
+  'promise': require('bluebird'),
+  '_': require('lodash')
+};
 
+const [ , , ...args ] = process.argv;
 
-bf = new Buffer.from(JSON.stringify({
-  mongodb: {
-    name: 'localhost',
-    port: 27017
-  },
-  adminProfile: {
-    appUrl: 'localhost',
-    appPort: 12345,
-  },
-  superuser: {
-    username: 'falsoDelTodo',
-    pass: 'falsaDelTodo'
-  },
-  secret: 'TFG'
-}, null, 2));
+const cryptoLib = require('../lib/cryptoLib')(opts);
 
-fs.writeFile('../config.json', bf , function (err) {
-  // Si hay error se muestra
-  if (!!err) {
+return cryptoLib.salt()
+.then(salt => cryptoLib.hash(salt, args[1] || 'defaultPass') )
+.then(hash => {
 
-    return console.log(err);
-  }
+  let bf = new Buffer.from(JSON.stringify({
+    mongoConfig: {
+      name: 'localhost',
+      port: 27017
+    },
+    appConfig: {
+      appPort: 23456,
+    },
+    superuser: {
+      username: args[0] || 'defaultName',
+      pass: hash
+    },
+    secret: args[2] || 'TFG',
+    issuer: args[3] || 'UniOvi'
+  }, null, 2));
 
-  console.log('Config.json creado');
+  return fs.writeFile('../config.json', bf , function (err) {
+    // Si hay error se muestra
+    if (!!err) {
+
+      return console.log(err);
+    }
+
+    console.log('Config.json creado');
+  });
 });

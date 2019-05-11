@@ -64,7 +64,7 @@ describe('ADMIN TEST :', function() {
   // Test Vars //
   ///////////////
 
-  const path = 'http://localhost:' + APP.config.server.adminAppPort + '/api/admin';
+  const path = 'http://localhost:' + APP.config.server.appPort + '/api/admin';
 
   let admins = [
     {

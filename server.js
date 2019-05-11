@@ -47,14 +47,14 @@ module.exports.init = app => {
 
       app.httpServer = http.createServer(app);
 
-      app.httpServer.listen(app.config.server.adminAppPort, (err) => {
+      app.httpServer.listen(app.config.server.appPort, (err) => {
 
         if (!!err) {
 
           return reject(err);
         }
 
-        console.log('HTTP listening. Port: ' + app.config.server.adminAppPort);
+        console.log('HTTP listening. Port: ' + app.config.server.appPort);
         resolve();
       });
     });

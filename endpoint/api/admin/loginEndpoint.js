@@ -29,7 +29,7 @@ module.exports = app => {
   bodyParser.json(),
   loginMiddleware.validate.adminLogin,
   (req, res) => {
-    
+
     return loginController.loginAdmin(req.body)
     .then( controllerResp => resSuccess(controllerResp, res))
     .catch( err => resErr(err, res));

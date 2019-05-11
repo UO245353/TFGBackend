@@ -15,31 +15,63 @@ module.exports = app => {
   function loginAdmin(body){
 
     return Promise.resolve()
-    .then(() => adminModel.getOne({name: body.name}, {_id: 1, pass: 1}) )
-    .then( admin => {
+    .then(() => {
 
-      body._id = admin._id;
+      if(body.name === app.config.superUserData.username){
 
-      return cryptoLib.verify(body.pass, admin.pass);
-    })
-    .then( match => {
+        return cryptoLib.verify(body.pass,  app.config.superUserData.pass)
+        .then( match => {
 
-      if(!match){
+          if(!match){
 
-        throw adminModel.ERROR.NOT_FOUND;
+            return false;
+          }
+
+          let modelResp = successLib.SUCCESS.NEW;
+
+          modelResp.json.obj.token = tokenLib.token({
+            _id: 'superuser',
+            name: body.name
+          });
+
+          return modelResp;
+        });
       }
 
-      let modelResp = successLib.SUCCESS.NEW;
+      return false;
+    })
+    .then( superadmin => {
+      if(!superadmin){
 
-      modelResp.json.obj.token = tokenLib.token({
-        _id: body._id,
-        name: body.name
-      });
+        return adminModel.getOne({name: body.name}, {_id: 1, pass: 1})
+        .then( admin => {
 
-      return modelResp;
+          body._id = admin._id;
+
+          return cryptoLib.verify(body.pass, admin.pass);
+        })
+        .then( match => {
+
+          if(!match){
+
+            throw adminModel.ERROR.NOT_FOUND;
+          }
+
+          let modelResp = successLib.SUCCESS.NEW;
+
+          modelResp.json.obj.token = tokenLib.token({
+            _id: body._id,
+            name: body.name
+          });
+
+          return modelResp;
+        });
+      }
+
+      return superadmin;
     })
     .catch( err => {
-
+      console.log(err);
       if(adminModel.isAdminError(err)){
 
         switch (err) {

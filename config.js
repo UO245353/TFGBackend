@@ -9,7 +9,7 @@ let config;
 let fileContent;
 let configData;
 let mongodbURL;
-let adminAppPort;
+let appPort;
 let dbUrl;
 
 ///////////////////
@@ -18,7 +18,7 @@ let dbUrl;
 
 function getMongoDbUrl(data) {
 
-  return 'mongodb://' + data.mongodb.name + ':' + data.mongodb.port + '/{db_name}';
+  return 'mongodb://' + data.mongoConfig.name + ':' + data.mongoConfig.port + '/{db_name}';
 }
 
 
@@ -44,37 +44,25 @@ catch(e){
 configData = JSON.parse(fileContent);
 mongodbURL = getMongoDbUrl(configData);
 
-if(!configData.superuser || !configData.superuser.username || !configData.superuser.pass || !configData.superuser.salt){
+if(!configData.superuser || !configData.superuser.username || !configData.superuser.pass){
   console.log('Missing or Invalid superuser data');
   configData.superuser = {
     username : '',
-    pass : '',
-    salt : ''
+    pass : ''
   };
 }
 
-switch (process.env.NODE_ENV) {
-  case 'production':
-  adminAppPort = 23456;
-  dbUrl = mongodbURL.replace(/{db_name}/g, 'prodData');
-  break;
-  default:
-  adminAppPort = 23456;
-  dbUrl = mongodbURL.replace(/{db_name}/g, 'devData');
-  break;
-}
+appPort = configData.appConfig.appPort || 23456;
+dbUrl = mongodbURL.replace(/{db_name}/g, 'GTIData');
 
 config = {
   server: {
-    adminAppPort: adminAppPort,
+    appPort: appPort,
     dbUrl: dbUrl,
   },
-  adminProfile: {
-    appUrl: configData.adminProfile.appUrl,
-    appPort: configData.adminProfile.appPort,
-  },
   superUserData: configData.superuser,
-  secret: configData.secret
+  secret: configData.secret,
+  issuer: configData.issuer,
 };
 
 module.exports = config;
