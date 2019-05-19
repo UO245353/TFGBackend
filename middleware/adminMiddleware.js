@@ -81,7 +81,7 @@ module.exports = app => {
       errorIn.push('email');
     }
 
-    if(!req.body.pass || !adminLib.isValidPass(req.body.pass)){
+    if(!!req.body.pass && !adminLib.isValidPass(req.body.pass)){
 
       errorIn.push('pass');
     }

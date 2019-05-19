@@ -1100,15 +1100,6 @@ describe('ADMIN TEST :', function() {
                 auth: tokens[0]
               },
               json: {
-                name: 'das',
-                email: 'd@d.d',
-              }
-            },
-            {
-              headers: {
-                auth: tokens[0]
-              },
-              json: {
                 name: 'a',
                 email: 'badEmail',
                 pass: 'badPass'
