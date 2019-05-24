@@ -70,8 +70,7 @@ module.exports = app => {
         return Promise.resolve()
         .then(() => admin.getOne({name: editedData.name}, {_id: 1}) )
         .then( admin => {
-
-          if(admin._id === filter._id){
+          if(admin._id.toString() === filter._id.toString()){
 
             throw ERROR.NOT_FOUND;
           }

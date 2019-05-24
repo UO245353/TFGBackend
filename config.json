@@ -8,8 +8,8 @@
   },
   "superuser": {
     "username": "UO245353",
-    "pass": "$2b$10$tmhxU/kyFVn5d/Pg.bALDO13WXjyicUNmYWUnovoNfCPBlrA/9D.6"
+    "pass": "$2b$10$g6vII3RLp1qRQZN2.Ipcre21y0N7zRUyHpS2P32lj4Fi6JD6RHR2u"
   },
-  "secret": "TFG",
+  "secret": "GestionTISecret",
   "issuer": "UniOvi"
 }

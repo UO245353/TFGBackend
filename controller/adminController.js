@@ -140,7 +140,7 @@ module.exports = app => {
     })
     .then( modelResp => successLib.SUCCESS.UPDATE)
     .catch( err => {
-
+      console.log('controller',err);
       if(adminModel.isAdminError(err)){
 
         switch (err) {

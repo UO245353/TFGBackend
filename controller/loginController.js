@@ -71,7 +71,6 @@ module.exports = app => {
       return superadmin;
     })
     .catch( err => {
-      console.log(err);
       if(adminModel.isAdminError(err)){
 
         switch (err) {
