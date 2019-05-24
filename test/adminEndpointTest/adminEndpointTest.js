@@ -1005,7 +1005,7 @@ describe('ADMIN TEST :', function() {
                 auth: tokens[0]
               },
               json: {
-                name: 'admin0',
+                name: admins[1].name,
                 email: 'sample@sample.sample',
                 pass: 'Sample123@'
               }
