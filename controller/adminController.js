@@ -114,7 +114,7 @@ module.exports = app => {
 
       if(!exist){
 
-        throw adminModel.ERROR.NOT_FOUND(['editAdmin']);
+        throw adminModel.ERROR.NOT_FOUND;
       }
 
       if(!body.pass){
@@ -127,7 +127,7 @@ module.exports = app => {
       .then(salt => cryptoLib.hash(salt, body.pass) )
       .catch( err => {
 
-        throw adminModel.ERROR.UNKNOWN(['editAdmin']);
+        throw adminModel.ERROR.UNKNOWN;
       });
     })
     .then(pass => {
@@ -140,7 +140,7 @@ module.exports = app => {
     })
     .then( modelResp => successLib.SUCCESS.UPDATE)
     .catch( err => {
-      console.log('controller',err);
+
       if(adminModel.isAdminError(err)){
 
         switch (err) {

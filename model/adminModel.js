@@ -134,8 +134,8 @@ module.exports = app => {
 
     return Promise.resolve()
     .then(() => admin.getOne(filter, {_id: 1}))
-    .then(true)
-    .catch(false);
+    .then(() => true)
+    .catch(() => false);
   };
 
   return admin;

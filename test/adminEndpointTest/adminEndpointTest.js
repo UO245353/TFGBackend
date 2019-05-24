@@ -117,6 +117,11 @@ describe('ADMIN TEST :', function() {
 
     _.each(admins, admin => tokens.push(tokenLib.token(admin)));
 
+    tokens.push(tokenLib.token({
+      _id: 'superuser',
+      name: APP.config.superUserData.username
+    }));
+
     return;
   }) );
 
@@ -249,7 +254,7 @@ describe('ADMIN TEST :', function() {
           const requests = [
             {
               headers: {
-                auth: tokens[0]
+                auth: tokens[tokens.length - 1]
               },
               json: {}
             }
