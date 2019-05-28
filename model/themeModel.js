@@ -204,6 +204,27 @@ module.exports = app => {
     });
   };
 
+  theme.edit = (themeId, editedData) => {
+
+    return Promise.resolve()
+    .then(() => theme.updateOne({_id: themeId},{$set: editedData}).exec())
+    .then(resp => {
+
+       if(resp.n === 0){
+
+         throw theme.ERROR.NOT_FOUND;
+       }
+    })
+    .catch(err => {
+      if(err.code === 11000){
+
+        throw theme.ERROR.CONFLICT;
+      }
+
+      throw theme.ERROR.UNKNOWN;
+    });
+  };
+
   theme.rm = filter => {
 
     return Promise.resolve()

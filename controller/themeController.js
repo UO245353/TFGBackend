@@ -94,6 +94,29 @@ module.exports = app => {
     });
   }
 
+  function editTheme(themeId, body){
+
+    return Promise.resolve()
+    .then(() => themeModel.edit(themeId, body))
+    .then(() => successLib.SUCCESS.UPDATE )
+    .catch( err => {
+      console.log(err);
+      if(themeModel.isThemeError(err)){
+
+        switch (err) {
+          case themeModel.ERROR.CONFLICT: {
+
+            throw errorLib.ERROR.CONFLICT(['editTheme']);
+          }
+        }
+      }
+      else{
+
+        throw errorLib.ERROR.INTERNAL_SERVER_ERROR(['addNewTheme']);
+      }
+    });
+  }
+
   function removeTheme(themeId){
 
     return Promise.resolve()
@@ -221,6 +244,7 @@ module.exports = app => {
     getThemeList,
     getTheme,
     addNewTheme,
+    editTheme,
     removeTheme,
     addNewQuestion,
     addNewSection,

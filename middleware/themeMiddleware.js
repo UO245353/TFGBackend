@@ -51,6 +51,45 @@ module.exports = app => {
     next();
   };
 
+  validate.editTheme = (req, res, next) => {
+
+    let errorIn = [];
+
+    // Required data
+
+    if(!_.every([req.body, req.body.number, req.body.title], item => !_.isUndefined(item))){
+
+      let error = errorLib.ERROR.BAD_REQUEST(['editTheme']);
+
+      return res.status(error.code).json(error.json);
+    }
+
+    // Data analisis
+
+    if(!themeLib.isValidNumber(req.body.number)){
+
+      errorIn.push('number');
+    }
+
+    if(!themeLib.isValidTitle(req.body.title)){
+
+      errorIn.push('title');
+    }
+
+    // error analisis
+
+    if(errorIn.length > 0){
+
+      errorIn.push('editTheme');
+
+      let error = errorLib.ERROR.UNPROCESSABLE_ENTITY(errorIn);
+
+      return res.status(error.code).json(error.json);
+    }
+
+    next();
+  };
+
   validate.newQuestion = (req, res, next) => {
 
     let errorIn = [];

@@ -72,6 +72,17 @@ module.exports = app => {
     .catch( err => resErr(err, res));
   });
 
+  app.post('/api/theme/:id',
+  authMiddleware.checkAuth,
+  bodyParser.json(),
+  themeMiddleware.validate.editTheme,
+  (req, res) => {
+
+    return themeController.editTheme(req.params.id, req.body)
+    .then( controllerResp => resSuccess(controllerResp, res))
+    .catch( err => resErr(err, res));
+  });
+
   app.post('/api/theme/:id/question',
   authMiddleware.checkAuth,
   themeMiddleware.validate.mongoId,
