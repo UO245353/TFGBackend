@@ -252,7 +252,7 @@ module.exports = app => {
 
     return Promise.resolve()
     .then(() => theme.getOne({_id: themeId}, {sections: 1}) )
-    .then( theme => !!_.find(theme.sections, section => (section.number === number || section.title.toLowerCase() === title.toLowerCase()) ) )
+    .then( theme => !!_.find(theme.sections, section => (Number(section.number) === Number(number) || section.title.toLowerCase() === title.toLowerCase()) ) )
     .catch(() => false);
   };
 
@@ -260,7 +260,7 @@ module.exports = app => {
 
     return Promise.resolve()
     .then(() => theme.getOne({_id: themeId}, {questions: 1}) )
-    .then( theme => !!_.find(theme.questions, quest => (quest.number === number || quest.title.toLowerCase() === question.toLowerCase()) ) )
+    .then( theme => !!_.find(theme.questions, quest => (Number(quest.number) === Number(number) || quest.question.toLowerCase() === question.toLowerCase()) ) )
     .catch(() => false);
   };
 
