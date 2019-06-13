@@ -174,7 +174,7 @@ module.exports = app => {
     return Promise.resolve()
     .then(() => Promise.all([
       theme.exist({_id: themeId}),
-      theme.existQuestion(themeId, sectionData.number, sectionData.title)
+      theme.existSection(themeId, sectionData.number, sectionData.title)
     ]) )
     .then( exist => {
 
