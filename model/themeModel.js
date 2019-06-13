@@ -60,6 +60,16 @@ module.exports = app => {
         throw ERROR.NOT_FOUND;
       }
 
+      if(!!theme.sections && theme.sections.length > 0){
+
+        theme.sections = _.sortBy(theme.sections, o => o.number);
+      }
+
+      if(!!theme.questions && theme.questions.length > 0){
+
+        theme.questions = _.sortBy(theme.questions, o => o.number);
+      }
+
       return theme;
     });
   };
