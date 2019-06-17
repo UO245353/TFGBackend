@@ -59,7 +59,8 @@ module.exports = app => {
       alexaLib.handlers.SessionEndedRequestHandler
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-    .create() )
+    .create()
+    .lambda() )
     .then( skill => {
 
       debug('REQUEST STEP 3', {skill, props: Object.keys(skill)});
