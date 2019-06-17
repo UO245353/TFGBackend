@@ -30,13 +30,15 @@ module.exports = app => {
   app.post('/alexa',
   (req, res, next) => {
 
-    debug('REQUEST', req);
+    debug('REQUEST', 'ALEXA REQUEST');
 
     next();
   },
   alexaVerifier,
   bodyParser.json(),
   (req, res) => {
+
+    debug('REQUEST', Object.keys(req));
 
     return res.status(500).json({});
   });
