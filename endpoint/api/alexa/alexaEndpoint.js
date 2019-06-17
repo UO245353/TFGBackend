@@ -65,7 +65,12 @@ module.exports = app => {
 
       debug('REQUEST STEP 3', {skill, props: Object.keys(skill)});
 
-      return await skill.invoke(event, context);
+      return skill.invoke(event, context);
+    })
+    .then(resp => {
+      debug('REQUEST STEP 3', {resp, props: Object.keys(resp)});
+
+      return resp;
     });
 
   });
