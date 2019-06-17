@@ -60,7 +60,7 @@ module.exports = app => {
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .create();
 
-    skill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
+    skill.CustomSkill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
 
     debug('REQUEST', 'STEP 3');
 
