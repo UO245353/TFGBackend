@@ -62,7 +62,7 @@ module.exports = app => {
 
     debug('REQUEST', 'STEP 3');
 
-    debug('REQUEST', 'STEP 4', skill);
+    debug('REQUEST', {'STEP 4': skill});
 
     return Promise.resolve()
     .then(() => skill.invoke(event, context));
