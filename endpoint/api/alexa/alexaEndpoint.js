@@ -52,13 +52,7 @@ module.exports = app => {
 
     return Promise.resolve()
     .then(() => Alexa.SkillBuilders.custom()
-    .addRequestHandlers(
-      alexaLib.handlers.LaunchRequestHandler,
-      alexaLib.handlers.HelpIntentHandler,
-      alexaLib.handlers.CancelAndStopIntentHandler,
-      alexaLib.handlers.SessionEndedRequestHandler,
-      alexaLib.handlers.LeeTema
-    )
+    .addRequestHandlers(alexaLib.handlers)
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId('amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7')
     .create() )
