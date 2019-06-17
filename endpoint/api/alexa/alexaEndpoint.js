@@ -59,7 +59,7 @@ module.exports = app => {
       alexaLib.handlers.SessionEndedRequestHandler
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-    .withSkillId('e51919de-d88f-49cc-b72e-9580e7fb80b7')
+    .withSkillId('amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7')
     .create() )
     .then( skill => {
 
