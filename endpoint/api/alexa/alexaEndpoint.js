@@ -50,7 +50,8 @@ module.exports = app => {
 
     debug('REQUEST', 'STEP 2');
 
-    let skill = Alexa.SkillBuilders.custom()
+    return Promise.resolve()
+    .then(() => Alexa.SkillBuilders.custom()
     .addRequestHandlers(
       alexaLib.handlers.LaunchRequestHandler,
       alexaLib.handlers.HelpIntentHandler,
@@ -58,16 +59,19 @@ module.exports = app => {
       alexaLib.handlers.SessionEndedRequestHandler
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-    .create();
+    .create() )
+    .then( skill => {
 
-    skill.CustomSkill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
+    //  skill.CustomSkill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
 
-    debug('REQUEST', 'STEP 3');
+      debug('REQUEST', 'STEP 3');
 
-    debug('REQUEST', {'STEP 4': skill});
+      debug('REQUEST', {'STEP 4': skill});
 
-    return Promise.resolve()
-    .then(() => skill.invoke(event, context));
+      return Promise.resolve()
+      .then(() => skill.invoke(event, context));
+    });
+
   });
 
 };
