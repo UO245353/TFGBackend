@@ -56,7 +56,8 @@ module.exports = app => {
       alexaLib.handlers.LaunchRequestHandler,
       alexaLib.handlers.HelpIntentHandler,
       alexaLib.handlers.CancelAndStopIntentHandler,
-      alexaLib.handlers.SessionEndedRequestHandler
+      alexaLib.handlers.SessionEndedRequestHandler,
+      alexaLib.handlers.LeeTema
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId('amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7')
