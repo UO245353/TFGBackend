@@ -70,7 +70,7 @@ module.exports = app => {
     .then(resp => {
       debug('REQUEST STEP 3', {resp, props: Object.keys(resp)});
 
-      return resp;
+      return context.success(resp);
     });
 
   });
