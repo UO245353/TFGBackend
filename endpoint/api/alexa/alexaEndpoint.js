@@ -59,16 +59,12 @@ module.exports = app => {
       alexaLib.handlers.SessionEndedRequestHandler
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-    .create()
-    .lambda() )
+    .withSkillId('e51919de-d88f-49cc-b72e-9580e7fb80b7')
+    .create() )
     .then( skill => {
 
       debug('REQUEST STEP 3', {skill, props: Object.keys(skill)});
 
-      skill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
-
-
-      debug('REQUEST STEP 4', skill);
 
       return skill.invoke(event, context);
     });
