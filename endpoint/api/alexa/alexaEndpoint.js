@@ -34,7 +34,7 @@ module.exports = app => {
   bodyParser.json(),
   (req, res) => {
 
-    debug('REQUEST BODY', 'REQUEST');
+    debug('REQUEST', 'STEP 1');
 
     let context = alexaContext();
 
@@ -48,19 +48,19 @@ module.exports = app => {
 
     let event = req.body;
 
-    let skill;
+    debug('REQUEST', 'STEP 2');
 
-    if (!skill) {
-      skill = Alexa.SkillBuilders.custom()
-      .addRequestHandlers(
-        alexaLib.handlers.LaunchRequestHandler,
-        alexaLib.handlers.HelpIntentHandler,
-        alexaLib.handlers.CancelAndStopIntentHandler,
-        alexaLib.handlers.SessionEndedRequestHandler
-      )
-      .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-      .create();
-    }
+    let skill = Alexa.SkillBuilders.custom()
+    .addRequestHandlers(
+      alexaLib.handlers.LaunchRequestHandler,
+      alexaLib.handlers.HelpIntentHandler,
+      alexaLib.handlers.CancelAndStopIntentHandler,
+      alexaLib.handlers.SessionEndedRequestHandler
+    )
+    .addErrorHandlers(alexaLib.handlers.ErrorHandler)
+    .create();
+
+    debug('REQUEST', 'STEP 3');
 
     return skill.invoke(event, context);
 
