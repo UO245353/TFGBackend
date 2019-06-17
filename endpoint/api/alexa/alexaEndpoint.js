@@ -2,7 +2,7 @@
 
 module.exports = app => {
 
-  const Alexa = require('ask-sdk-v1adapter');
+  const Alexa = require('ask-sdk');
   const bodyParser = require('body-parser');
   const alexaVerifier = require('alexa-verifier-middleware');
   const alexaContext = require('aws-lambda-mock-context');
