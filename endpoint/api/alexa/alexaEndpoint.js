@@ -2,7 +2,7 @@
 
 module.exports = app => {
 
-  const Alexa = require('ask-sdk');
+  const Alexa = require('ask-sdk-core');
   const bodyParser = require('body-parser');
   const alexaVerifier = require('alexa-verifier-middleware');
   const alexaContext = require('aws-lambda-mock-context');
@@ -29,37 +29,6 @@ module.exports = app => {
     }
   }
 
-  const handlerDriver = {
-    //Generic handlers
-    'LaunchRequest': function () {
-
-      return alexaLib.launch(this);
-    },
-    'AMAZON.HelpIntent': function () {
-
-      return alexaLib.help(this);
-    },
-    'AMAZON.CancelIntent': function () {
-
-      return alexaLib.cancel(this);
-    },
-    'AMAZON.StopIntent': function () {
-
-      return alexaLib.cancel(this);
-    },
-    'Unhandled': function () {
-
-      return this.emit(
-        ':ask',
-        alexaLib.alexaResponses.NOT_SUPPORTED
-      );
-    },
-    'Speak': function (text) {
-
-      return this.emit(':tell', text);
-    }
-  };
-
   app.post('/alexa',
   alexaVerifier,
   bodyParser.json(),
@@ -78,11 +47,23 @@ module.exports = app => {
     });
 
     let event = req.body;
-    let alexaHandler = Alexa.handler(event, context);
 
-    alexaHandler.registerHandlers(handlerDriver);
+    let skill;
 
-    return alexaHandler.execute();
+    if (!skill) {
+      skill = Alexa.SkillBuilders.custom()
+      .addRequestHandlers(
+        alexaLib.handlers.LaunchRequestHandler,
+        alexaLib.handlers.HelpIntentHandler,
+        alexaLib.handlers.CancelAndStopIntentHandler,
+        alexaLib.handlers.SessionEndedRequestHandler
+      )
+      .addErrorHandlers(alexaLib.handlers.ErrorHandler)
+      .create();
+    }
+
+    return skill.invoke(event, context);
+
   });
 
 };
