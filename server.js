@@ -40,6 +40,10 @@ module.exports.init = app => {
 
       console.log('Theme Endpoint Required');
 
+      require('./endpoint/api/alexa/alexaEndpoint')(app);
+
+      console.log('Theme Endpoint Required');
+
       app.get('/api/*', (req, res) => res.status(404).json('Unexistent url path') );
       app.post('/api/*', (req, res) => res.status(404).json('Unexistent url path') );
 
