@@ -34,8 +34,6 @@ module.exports = app => {
   bodyParser.json(),
   (req, res) => {
 
-    debug('REQUEST', 'STEP 1');
-
     let context = alexaContext();
 
     context.Promise
@@ -47,8 +45,6 @@ module.exports = app => {
     });
 
     let event = req.body;
-
-    debug('REQUEST', 'STEP 2');
 
     return Promise.resolve()
     .then(() => Alexa.SkillBuilders.custom()
@@ -62,14 +58,9 @@ module.exports = app => {
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId('amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7')
     .create() )
-    .then( skill => {
-
-      debug('REQUEST STEP 3', {skill, props: Object.keys(skill)});
-
-      return skill.invoke(event, context);
-    })
+    .then( skill => skill.invoke(event, context))
     .then(resp => {
-      debug('REQUEST STEP 3', {resp, props: Object.keys(resp)});
+      debug('REQUEST STEP 3', resp);
 
       return context.succeed(resp);
     });
