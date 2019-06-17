@@ -22,7 +22,7 @@ module.exports = app => {
       return;
     }
     if (tag) {
-      console.log(tag, message);
+      console.log(tag,':', message);
     }
     else {
       console.log(message);
@@ -65,7 +65,7 @@ module.exports = app => {
   bodyParser.json(),
   (req, res) => {
 
-    debug('REQUEST BODY', req.body);
+    debug('REQUEST BODY', 'REQUEST');
 
     let context = alexaContext();
 
