@@ -62,14 +62,13 @@ module.exports = app => {
     .create() )
     .then( skill => {
 
-    //  skill.CustomSkill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
+      skill.CustomSkill.skillId = 'e51919de-d88f-49cc-b72e-9580e7fb80b7';
 
       debug('REQUEST', 'STEP 3');
 
-      debug('REQUEST', {'STEP 4': skill});
+      debug('REQUEST STEP 4', skill);
 
-      return Promise.resolve()
-      .then(() => skill.invoke(event, context));
+      return skill.invoke(event, context);
     });
 
   });
