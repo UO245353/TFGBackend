@@ -8,6 +8,7 @@
     "individual-test": "mocha $1"
   },
   "dependencies": {
+    "ask-sdk": "^2.6.0",
     "bcrypt": "3.0.5",
     "bluebird": "3.5.3",
     "body-parser": "1.18.3",
@@ -20,7 +21,9 @@
     "request-promise": "4.2.4"
   },
   "devDependencies": {
+    "alexa-verifier-middleware": "^1.0.2",
     "app-module-path": "2.2.0",
+    "aws-lambda-mock-context": "^3.2.1",
     "gulp": "3.9.1",
     "gulp-env": "0.4.0",
     "gulp-install": "1.1.0",
