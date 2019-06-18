@@ -52,10 +52,13 @@ module.exports = app => {
     .custom()
     .addRequestHandlers(
       alexaLib.handlers.LaunchRequestHandler,
-      alexaLib.handlers.LeeTema,
       alexaLib.handlers.HelpIntentHandler,
       alexaLib.handlers.CancelAndStopIntentHandler,
-      alexaLib.handlers.SessionEndedRequestHandler
+      alexaLib.handlers.SessionEndedRequestHandler,
+      alexaLib.handlers.LeeTema,
+      alexaLib.handlers.HazTest,
+      alexaLib.handlers.CorregirTest,
+      alexaLib.handlers.RespondePregunta,
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId(app.config.amazomAppID)
