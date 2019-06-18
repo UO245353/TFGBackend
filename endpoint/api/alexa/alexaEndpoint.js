@@ -47,7 +47,9 @@ module.exports = app => {
     let event = req.body;
 
     return Promise.resolve()
-    .then(() => Alexa.SkillBuilders.custom()
+    .then(() => Alexa
+    .SkillBuilders
+    .custom()
     .addRequestHandlers(
       alexaLib.handlers.LaunchRequestHandler,
       alexaLib.handlers.LeeTema,
@@ -56,15 +58,10 @@ module.exports = app => {
       alexaLib.handlers.SessionEndedRequestHandler
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
-    .withSkillId('amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7')
+    .withSkillId(app.config.amazomAppID)
     .create() )
     .then( skill => skill.invoke(event, context))
-    .then(resp => {
-      debug('REQUEST STEP 3', resp);
-
-      return context.succeed(resp);
-    });
-
+    .then(resp =>  context.succeed(resp));
   });
 
 };

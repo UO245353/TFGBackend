@@ -29,7 +29,8 @@ return cryptoLib.salt()
       pass: hash
     },
     secret: args[2] || 'TFG',
-    issuer: args[3] || 'UniOvi'
+    issuer: args[3] || 'UniOvi',
+    amazomAppID: args[3] || 'amzn1.ask.skill.e51919de-d88f-49cc-b72e-9580e7fb80b7'
   }, null, 2));
 
   return fs.writeFile('../config.json', bf , function (err) {

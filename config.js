@@ -63,6 +63,7 @@ config = {
   superUserData: configData.superuser,
   secret: configData.secret,
   issuer: configData.issuer,
+  amazomAppID: configData.amazomAppID
 };
 
 module.exports = config;
