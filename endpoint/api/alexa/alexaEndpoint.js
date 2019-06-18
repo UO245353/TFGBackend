@@ -59,6 +59,10 @@ module.exports = app => {
       alexaLib.handlers.HazTest,
       alexaLib.handlers.CorregirTest,
       alexaLib.handlers.RespondePregunta,
+      alexaLib.handlers.AyudaLeeTema,
+      alexaLib.handlers.AyudaHazTest,
+      alexaLib.handlers.AyudaCorregirTest,
+      alexaLib.handlers.AyudaRespondePregunta
     )
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId(app.config.amazomAppID)
