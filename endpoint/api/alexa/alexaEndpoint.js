@@ -68,7 +68,10 @@ module.exports = app => {
     .withSkillId(app.config.amazomAppID)
     .create() )
     .then( skill => skill.invoke(event, context))
-    .then(resp =>  context.succeed(resp));
+    .then(resp => {
+      console.log(resp);
+      return context.succeed(resp);
+    });
   });
 
 };
