@@ -36,7 +36,7 @@ module.exports = app => {
 
   function getThemeQuestionsCorrected(themeNumber){
 
-    function castSectionsToContent(questions){
+    function castQuestionsToQuestionsCorrected(questions){
       if(!questions){
 
         throw ERROR.NO_QUESTIONS;
@@ -50,12 +50,12 @@ module.exports = app => {
         correctedQuestions += 'Pregunta: \n\n' + question.question + 'Respuesta correcta: \n\n' + validResp.character + '. ' + validResp.response;
       });
 
-      return content;
+      return correctedQuestions;
     }
 
     return Promise.resolve()
     .then(() => themeModel.getOne({number: themeNumber}, {questions: 1}))
-    .then(theme => castSectionsToContent(theme.questions));
+    .then(theme => castQuestionsToQuestionsCorrected(theme.questions));
   }
 
   return {
