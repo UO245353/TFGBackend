@@ -70,7 +70,7 @@ module.exports = app => {
     .then( skill => skill.invoke(event, context))
     .then(resp => {
       console.log(resp);
-      return context.succeed(resp);
+      return context.succeed(JSON.parse(require('circular-json').stringify(resp)));
     });
   });
 
