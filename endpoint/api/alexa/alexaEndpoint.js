@@ -38,7 +38,10 @@ module.exports = app => {
 
     context.Promise
     .then(resp => res.status(200).json(resp) )
-    .catch(err => res.status(400).json((_.isObject(err)) ? {error: err} : {error: 'unknow'}) );
+    .catch(err => {
+      console.log(err);
+      return res.status(400).json((_.isObject(err)) ? {error: err} : {error: 'unknow'});
+    } );
 
     let event = req.body;
 
