@@ -39,7 +39,7 @@ module.exports = app => {
     function castQuestionsToQuestionsCorrected(questions){
       if(!questions){
 
-        throw ERROR.NO_QUESTIONS;
+        throw ERROR.NO_QUESTION;
       }
 
       let correctedQuestions = '';
@@ -47,7 +47,14 @@ module.exports = app => {
       _.each(questions, question => {
         let validResp = _.find(question.responses, resp => resp.valid);
 
-        correctedQuestions += 'Pregunta: \n\n' + question.question + 'Respuesta correcta: \n\n' + validResp.character + '. ' + validResp.response;
+        let responsesString = '';
+
+        _.each(question.responses, resp => {
+
+          responsesString =+ '.\n\n' + question.character + ' . ' + validResp.response + '.\n\n'
+        });
+
+        correctedQuestions += '\n\n.Pregunta: \n\n' + question.question + '\n\n.Respuestas: \n\n' +responsesString + '\n\n.Respuesta correcta: \n\n' + validResp.character + '. ' + validResp.response;
       });
 
       return correctedQuestions;
