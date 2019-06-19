@@ -34,7 +34,32 @@ module.exports = app => {
     .then(theme => castSectionsToContent(theme.sections));
   }
 
+  function getThemeQuestionsCorrected(themeNumber){
+
+    function castSectionsToContent(questions){
+      if(!questions){
+
+        throw ERROR.NO_QUESTIONS;
+      }
+
+      let correctedQuestions = '';
+
+      _.each(questions, question => {
+        let validResp = _.find(question.responses, resp => resp.valid);
+
+        correctedQuestions += 'Pregunta: \n\n' + question.question + 'Respuesta correcta: \n\n' + validResp.character + '. ' + validResp.response;
+      });
+
+      return content;
+    }
+
+    return Promise.resolve()
+    .then(() => themeModel.getOne({number: themeNumber}, {questions: 1}))
+    .then(theme => castSectionsToContent(theme.questions));
+  }
+
   return {
+    getThemeQuestionsCorrected,
     getThemeContent,
     ERROR
   };
