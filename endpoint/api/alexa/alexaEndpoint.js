@@ -38,11 +38,7 @@ module.exports = app => {
 
     context.Promise
     .then(resp => res.status(200).json(resp) )
-    .catch(err => {
-      console.log(req.body.request);
-      console.log(err);
-      return res.status(400).json((_.isObject(err)) ? {error: err} : {error: 'unknow'});
-    });
+    .catch(err => res.status(400).json((_.isObject(err)) ? {error: err} : {error: 'unknow'}) );
 
     let event = req.body;
 
@@ -68,10 +64,7 @@ module.exports = app => {
     .withSkillId(app.config.amazomAppID)
     .create() )
     .then( skill => skill.invoke(event, context))
-    .then(resp => {
-      console.log(resp);
-      return context.succeed(JSON.parse(require('circular-json').stringify(resp)));
-    });
+    .then(resp => context.succeed(JSON.parse(require('circular-json').stringify(resp))) );
   });
 
 };
