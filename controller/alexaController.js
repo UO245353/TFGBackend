@@ -42,9 +42,12 @@ module.exports = app => {
         throw ERROR.NO_QUESTION;
       }
 
+      console.log('castQuestionsToQuestionsCorrected 1',questions);
+
       let correctedQuestions = '';
 
       _.each(questions, question => {
+        console.log('castQuestionsToQuestionsCorrected 2',question);
         let validResp = _.find(question.responses, resp => resp.valid);
 
         let responsesString = '';
@@ -54,9 +57,12 @@ module.exports = app => {
           responsesString =+ '\n\n ' + resp.character + ' \n\n ' + resp.response + ' \n\n';
         });
 
+        console.log('castQuestionsToQuestionsCorrected 3', responsesString);
+
         correctedQuestions += '\n\n Pregunta ' + question.number+ ':\n\n '+ question.question + '\n\nRespuestas: \n\n' +responsesString + '\n\nRespuesta correcta: \n\n' + validResp.character + '\n\n' + validResp.response;
       });
 
+      console.log('castQuestionsToQuestionsCorrected 4', correctedQuestions);
       return correctedQuestions;
     }
 
