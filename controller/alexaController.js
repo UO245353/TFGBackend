@@ -30,7 +30,7 @@ module.exports = app => {
     }
 
     return Promise.resolve()
-    .then(() => themeModel.getOne({number: Number(themeNumber)}, {sections: 1}))
+    .then(() => themeModel.getOne({number: themeNumber}, {sections: 1}))
     .then(theme => castSectionsToContent(theme.sections));
   }
 
