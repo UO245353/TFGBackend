@@ -51,10 +51,10 @@ module.exports = app => {
 
         _.each(question.responses, resp => {
 
-          responsesString =+ '\n\n' + question.character + ' \n\n ' + validResp.response + ' \n\n';
+          responsesString =+ '\n\n' + resp.character + ' \n\n ' + resp.response + ' \n\n';
         });
 
-        correctedQuestions += '\n\nPregunta: \n\n' + question.number+ ' \n\n '+ question.question + '\n\nRespuestas: \n\n' +responsesString + '\n\nRespuesta correcta: \n\n' + validResp.character + '\n\n' + validResp.response;
+        correctedQuestions += '\n\nPregunta ' + question.number+ ':\n\n '+ question.question + '\n\nRespuestas: \n\n' +responsesString + '\n\nRespuesta correcta: \n\n' + validResp.character + '\n\n' + validResp.response;
       });
 
       return correctedQuestions;
