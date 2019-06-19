@@ -41,7 +41,7 @@ module.exports = app => {
     .catch(err => {
       console.log(req.body.request);
       console.log(err);
-      return res.status(400).json({error: err});
+      return res.status(400).json((_.isObject(err)) ? {error: err} : {error: 'unknow'});
     });
 
     let event = req.body;
