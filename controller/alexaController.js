@@ -53,8 +53,11 @@ module.exports = app => {
         let responsesString = '';
 
         _.each(question.responses, resp => {
+          console.log('castQuestionsToQuestionsCorrected 2.5', responsesString);
 
-          responsesString =+ '\n\n ' + resp.character + ' \n\n ' + resp.response + ' \n\n';
+          responsesString += '\n\n ' + resp.character + ' \n\n ' + resp.response + ' \n\n';
+
+          return;
         });
 
         console.log('castQuestionsToQuestionsCorrected 3', responsesString);
