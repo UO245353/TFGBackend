@@ -7,8 +7,8 @@ module.exports = app => {
   const _ = app._;
 
   const ERROR = {
-    NO_CONTENT: '01',
-    NO_QUESTION: '02'
+    NO_CONTENT: '31',
+    NO_QUESTION: '32'
   };
 
   function getThemeContent(themeNumber){

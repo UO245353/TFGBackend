@@ -17,9 +17,9 @@ module.exports = app => {
   const _ = app._;
 
   const ERROR = {
-    UNKNOWN: '00',
-    NOT_FOUND: '01',
-    CONFLICT: '02'
+    UNKNOWN: '10',
+    NOT_FOUND: '11',
+    CONFLICT: '12'
   };
 
   theme.ERROR = ERROR;
