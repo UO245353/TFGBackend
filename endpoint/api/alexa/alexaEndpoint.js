@@ -66,8 +66,8 @@ module.exports = app => {
     .addErrorHandlers(alexaLib.handlers.ErrorHandler)
     .withSkillId(app.config.amazomAppID)
     .create() )
-    .then( skill => skill.invoke(event, context))
-    .then(resp => context.succeed(resp) );
+    .then(skill => skill.invoke(event, context))
+    .then(resp => context.succeed(require('circular-ref-fix').createRefs(resp)) );
   });
 
 };
